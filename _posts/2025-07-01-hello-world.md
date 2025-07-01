@@ -1,6 +1,8 @@
 ---
 title: "Hello World"
-date: 2025-07-01 00:00:00 +0800
+date: 2025-07-01 00:00:00 +0900
+categories: [ETC]
+tags: [etc]     # TAG names should always be lowercase
 ---
 
 헤더
