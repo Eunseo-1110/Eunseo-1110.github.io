@@ -39,4 +39,3 @@ tags: [etc]     # TAG names should always be lowercase
 Console.WriteLine("Hello World!");
 ~~~
 
-![WinBack](images/WinBack.png)
