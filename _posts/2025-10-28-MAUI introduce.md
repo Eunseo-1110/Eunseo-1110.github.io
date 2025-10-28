@@ -4,7 +4,7 @@ date: 2025-10-28 00:00:00 +0900
 categories: [MAUI]
 tags: [MAUI]     # TAG names should always be lowercase
 ---
-<details>
+<details markdown="1">
 <summary>잡담</summary>
 
     게임 개발을 하면서 늘어나는 데이터 테이블을 보기가 점점 어려워졌다. 그래서 '데이터를 눈에 보기 쉽게 하는 프로그램을 한 번 만들어보자'라는 생각을 하여, 어떤 프레임워크를 써볼까 고민이 되었다.
