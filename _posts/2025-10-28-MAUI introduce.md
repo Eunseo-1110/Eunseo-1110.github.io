@@ -6,7 +6,6 @@ tags: [MAUI]     # TAG names should always be lowercase
 ---
 <details>
     <summary> <strong>잡담</strong> </summary>
-    <div markdown="1">
 
     게임 개발을 하면서 늘어나는 데이터 테이블을 보기가 점점 어려워졌다. 그래서 '데이터를 눈에 보기 쉽게 하는 프로그램을 한 번 만들어보자'라는 생각을 하여, 어떤 프레임워크를 써볼까 고민이 되었다. 
      
@@ -27,8 +26,6 @@ tags: [MAUI]     # TAG names should always be lowercase
     
     이번에 포스트하려고 조사해보니 BlazorBindings.MAUI를 꽤나 사용하는 것 같다.
     <https://github.com/Dreamescaper/BlazorBindings.Maui>
-
-</div>
 </details>
 
 [Microsoft .NET MAUI란?](https://learn.microsoft.com/ko-kr/dotnet/maui/what-is-maui?view=net-maui-9.0) 
