@@ -5,14 +5,12 @@ categories: [MAUI]
 tags: [MAUI]     # TAG names should always be lowercase
 ---
 <details>
-    <summary> <strong>잡담</strong> </summary>
+<summary>잡담</summary>
 
-    게임 개발을 하면서 늘어나는 데이터 테이블을 보기가 점점 어려워졌다. 그래서 '데이터를 눈에 보기 쉽게 하는 프로그램을 한 번 만들어보자'라는 생각을 하여, 어떤 프레임워크를 써볼까 고민이 되었다. 
-     
-
-    만드는데 오랜 시간을 들이고 싶지 않아서 C#언어가 지원되는 프레임워크를 사용하고 싶었다.  WPF나 MAUI 둘 중 고민하다가 자마린이라는 프레임워크가 기술 지원을 종료하며 MAUI로 바뀌었다는 소식을 찾고 궁금해져서 MAUI를 사용하게 되었다.
-     
-
+    게임 개발을 하면서 늘어나는 데이터 테이블을 보기가 점점 어려워졌다. 그래서 '데이터를 눈에 보기 쉽게 하는 프로그램을 한 번 만들어보자'라는 생각을 하여, 어떤 프레임워크를 써볼까 고민이 되었다.
+    만드는데 오랜 시간을 들이고 싶지 않아서 C#언어가 지원되는 프레임워크를 사용하고 싶었다.  WPF나 MAUI 둘 중 고민하다가 자마린이라는 프레임워크가 기술 지원을 종료하며 MAUI로 바뀌었다는 소식을 찾고 궁금해져서 MAUI를 사용하게 되었다. 
+    
+    
     출시된지 얼마 안된 프레임워크라 그런지 버그가 꽤 많다. 찾아보니 MAUI에 대한 평가는 별로 좋은 편은 아니였다. 그냥 React Native나 Flutter쓰는걸 추천하는 편.
      
 
@@ -25,7 +23,8 @@ tags: [MAUI]     # TAG names should always be lowercase
     기왕 사용해봤으니 사용해본 기능 위주로 포스트를 해볼 생각이다.
     
     이번에 포스트하려고 조사해보니 BlazorBindings.MAUI를 꽤나 사용하는 것 같다.
-    <https://github.com/Dreamescaper/BlazorBindings.Maui>
+    [BlazorBindings MAUI](https://github.com/Dreamescaper/BlazorBindings.Maui)
+
 </details>
 
 [Microsoft .NET MAUI란?](https://learn.microsoft.com/ko-kr/dotnet/maui/what-is-maui?view=net-maui-9.0) 
@@ -40,7 +39,9 @@ tags: [MAUI]     # TAG names should always be lowercase
 
 ![MAUI Platform](https://learn.microsoft.com/ko-kr/dotnet/maui/media/what-is-maui/maui-overview.png?view=net-maui-9.0.png)
 
+
 > iOS 및 macOS용 앱을 빌드하려면 Mac이 필요합니다.
+{: .prompt-info }
 
 ### .NET MAUI 아키텍처 다이어그램
 ![MAUI Architecture Diagram](https://learn.microsoft.com/ko-kr/dotnet/maui/media/what-is-maui/architecture-diagram.png?view=net-maui-9.0.png)
