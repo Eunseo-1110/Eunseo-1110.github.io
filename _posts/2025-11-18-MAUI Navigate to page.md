@@ -15,19 +15,19 @@ tags: [MAUI]     # TAG names should always be lowercase
     
 </details>
 
-# 새로운 페이지 생성
+## 새로운 페이지 생성
 
 - 프로젝트 우클릭 → 추가 → 새 항목 → .NET MAUI 파일 생성을 해서 새로운 페이지를 만들 수 있다.
 
 ![New file Create MAUI](/assets/Images/New_file_Create_MAUI.png)
 
-# Shell
+## Shell
 
-## Shell.Current.GoToAsync()
+### Shell.Current.GoToAsync()
 
 - **URI 기반 네비게이션**을 제공하는 메서드. 해당 메서드를 통해서 페이지 간 이동을 간단하고 직관적으로 처리할 수 있다.
 
-## 경로등록
+### 경로등록
 
 - 라우트를 등록해야 페이지 이동을 할 수 있다.
 - xaml: `Route` 속성
@@ -67,7 +67,7 @@ public partial class AppShell : Shell
 }
 ```
 
-## 페이지 이동
+### 페이지 이동
 
 ```csharp
 // 절대경로
@@ -77,7 +77,7 @@ Shell.Current.GoToAsync("//NewPage1");
 Shell.Current.GoToAsync("NewPage1");
 ```
 
-## 데이터 전달
+### 데이터 전달
 
 - 전달
 
@@ -136,9 +136,9 @@ public partial class NewPage1 : ContentPage
 | **파라미터** | `GoToAsync("details?id=1")` | 쿼리 스트링 전달 |
 | **애니메이션** | `GoToAsync("details", false)` | 애니메이션 제어 |
 
-# NavigationPage
+## NavigationPage
 
-## **모덜리스 탐색 수행**
+### **모덜리스 탐색 수행**
 
 - .NET MAUI는 모덜리스 페이지 탐색을 지원한다. 모덜리스 페이지는 화면에 유지되며 다른 페이지로 이동할 때까지 계속 사용할 수 있다.
 - BackButton을 누르면 이전 화면으로 돌아갈 수 있다.
@@ -149,7 +149,7 @@ public partial class NewPage1 : ContentPage
 
 ![NavigationPage 구성 요소.](https://learn.microsoft.com/ko-kr/dotnet/maui/user-interface/pages/media/navigationpage/components.png?view=net-maui-10.0.png)
 
-## 페이지로 이동
+### 페이지로 이동
 
 ```csharp
 await Navigation.PushAsync(new NewPage1());
@@ -159,7 +159,7 @@ await Navigation.PushAsync(new NewPage1());
 await Navigation.PopModalAsync();
 ```
 
-## 데이터 전달
+### 데이터 전달
 
 - 생성자를 통해서 데이터를 전달할 수 있다.
     - 이동하려는 페이지에 string데이터를 전달하여 라벨에 출력하도록 하는 코드
@@ -179,7 +179,7 @@ await Navigation.PopModalAsync();
     
     ![Pass data during navigation](/assets/Images/Pass_data_during_navigation.png)
 
-# GoToAsync vs PushAsync
+## GoToAsync vs PushAsync
 
 | **특징** | **Shell.Current.GoToAsync** | **Navigation.PushAsync** |
 | --- | --- | --- |
