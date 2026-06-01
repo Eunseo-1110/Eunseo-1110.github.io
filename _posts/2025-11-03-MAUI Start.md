@@ -2,7 +2,7 @@
 title: "MAUI 시작"
 date: 2025-11-03 00:00:00 +0900
 categories: [MAUI]
-tags: [MAUI]     # TAG names should always be lowercase
+tags: [maui]     # TAG names should always be lowercase
 ---
 
 ### 시작할 때 참고하면 좋을 링크

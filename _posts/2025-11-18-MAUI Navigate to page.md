@@ -2,7 +2,7 @@
 title: "MAUI 페이지 이동"
 date: 2025-11-18 00:00:00 +0900
 categories: [MAUI]
-tags: [MAUI]     # TAG names should always be lowercase
+tags: [maui]     # TAG names should always be lowercase
 ---
 <details markdown="1">
 <summary>참고 링크</summary>
@@ -128,13 +128,13 @@ public partial class NewPage1 : ContentPage
 
 ### 메소드 정리
 
-| 패턴 | 코드 | 설명 |
-| --- | --- | --- |
-| **기본 이동** | `GoToAsync("details")` | 앞으로 이동 |
-| **뒤로 가기** | `GoToAsync("..")` | 한 단계 뒤로 |
-| **절대 경로** | `GoToAsync("//main")` | 루트부터 시작 |
-| **파라미터** | `GoToAsync("details?id=1")` | 쿼리 스트링 전달 |
-| **애니메이션** | `GoToAsync("details", false)` | 애니메이션 제어 |
+| 패턴           | 코드                          | 설명             |
+| -------------- | ----------------------------- | ---------------- |
+| **기본 이동**  | `GoToAsync("details")`        | 앞으로 이동      |
+| **뒤로 가기**  | `GoToAsync("..")`             | 한 단계 뒤로     |
+| **절대 경로**  | `GoToAsync("//main")`         | 루트부터 시작    |
+| **파라미터**   | `GoToAsync("details?id=1")`   | 쿼리 스트링 전달 |
+| **애니메이션** | `GoToAsync("details", false)` | 애니메이션 제어  |
 
 ## NavigationPage
 
@@ -181,10 +181,10 @@ await Navigation.PopModalAsync();
 
 ## GoToAsync vs PushAsync
 
-| **특징** | **Shell.Current.GoToAsync** | **Navigation.PushAsync** |
-| --- | --- | --- |
-| **기반** | Shell + URI 라우팅 | NavigationPage 스택 |
-| **이동 방식** | **URI 문자열** (예: `"//details"`) | **페이지 객체** (예: `new DetailPage()`) |
-| **데이터 전달** | 쿼리 파라미터 (`?id=10`) 및 `QueryProperty` 사용 | 생성자 주입 또는 `BindingContext` 직접 할당 |
-| **결합도** | **느슨한 결합** (페이지 타입을 몰라도 됨) | **강한 결합** (페이지 클래스를 직접 참조해야 함) |
-| **딥 링크** | 기본 지원 | 직접 구현 필요 |
+| **특징**        | **Shell.Current.GoToAsync**                      | **Navigation.PushAsync**                         |
+| --------------- | ------------------------------------------------ | ------------------------------------------------ |
+| **기반**        | Shell + URI 라우팅                               | NavigationPage 스택                              |
+| **이동 방식**   | **URI 문자열** (예: `"//details"`)               | **페이지 객체** (예: `new DetailPage()`)         |
+| **데이터 전달** | 쿼리 파라미터 (`?id=10`) 및 `QueryProperty` 사용 | 생성자 주입 또는 `BindingContext` 직접 할당      |
+| **결합도**      | **느슨한 결합** (페이지 타입을 몰라도 됨)        | **강한 결합** (페이지 클래스를 직접 참조해야 함) |
+| **딥 링크**     | 기본 지원                                        | 직접 구현 필요                                   |

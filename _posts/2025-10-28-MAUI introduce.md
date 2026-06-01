@@ -2,7 +2,7 @@
 title: "MAUI 소개"
 date: 2025-10-28 00:00:00 +0900
 categories: [MAUI]
-tags: [MAUI]     # TAG names should always be lowercase
+tags: [maui]     # TAG names should always be lowercase
 ---
 ### 잡담
 <details markdown="1">
