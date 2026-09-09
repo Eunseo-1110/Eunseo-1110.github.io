@@ -12,10 +12,52 @@ tags: [shader, study]     # TAG names should always be lowercase
 - 전 챕터에서 모형을 그렸으니 이제 그 모형을 옮기는 트릭에 대해서 설명하고 있다.
 그 방법은 좌표계 자체를 옮기는 것. `st` 에 더하기만하면 좌표계가 옮겨진다.
 - 아래 코드는 Translate예제를 참고해서 움직임을 Y축 기준으로 십자가가 핑퐁되는 느낌이 되게 만들었다.
-  
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-        <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/sXdGz7?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
-    </div>
+
+    <canvas id="pingpong-cross" style="width:100%; max-width:300px; aspect-ratio:1/1; display:block; margin:20px auto; background:#222;"></canvas>
+
+    {% include glsl-boilerplate.html %}
+
+    <script>
+    window.runGLSL("pingpong-cross", `
+        #ifdef GL_ES
+        precision mediump float;
+        #endif
+        
+        uniform vec2 u_resolution;
+        uniform float u_time;
+        
+        float box(in vec2 _st, in vec2 _size){
+            _size = vec2(0.5) - _size*0.5;
+            vec2 uv = smoothstep(_size,
+                                _size+vec2(0.001),
+                                _st);
+            uv *= smoothstep(_size,
+                            _size+vec2(0.001),
+                            vec2(1.0)-_st);
+            return uv.x*uv.y;
+        }
+        
+        float cross(in vec2 _st, float _size){
+            return  box(_st, vec2(_size,_size/4.)) +
+                    box(_st, vec2(_size/4.,_size));
+        }
+        
+        void main(){
+            vec2 st = gl_FragCoord.xy/u_resolution.xy;
+            vec3 color = vec3(0.0);
+        
+            float y = sin(u_time) * 0.5;
+            float x = (abs(fract(u_time * 0.5) * 2.0 - 1.0)) - 0.5;
+            vec2 translate = vec2(x, y); //vec2(cos(u_time * s),sin(u_time * s));
+            st += translate *0.75;
+        
+            color += vec3(cross(st,0.25));
+        
+            gl_FragColor = vec4(color,1.0);
+        }
+    `);
+    </script>
+
 
     ```glsl
     // Author @patriciogv ( patriciogonzalezvivo.com ) - 2015
@@ -85,8 +127,64 @@ tags: [shader, study]     # TAG names should always be lowercase
     
 - 전에 만든 십자가를 이동하는 코드에 회전을 추가.
     - 원래 `st -= translate` 로 했었는데 이러니까 회전이 이상하게 된다. 왜그런지 봤더니 `box()` 함수 내부에 0.5지점에 그려지도록 되어 있어서 그런 것. 그래서 0.5를 넣으면 십자가가 회전하면서 이동을 했던 것이였다.
-    
-    <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/7XdGz7?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+
+    <canvas id="pingpong-cross-rotate" style="width:100%; max-width:300px; aspect-ratio:1/1; display:block; margin:20px auto; background:#222;"></canvas>
+
+    <script>
+    window.runGLSL("pingpong-cross-rotate", `
+        #ifdef GL_ES
+        precision mediump float;
+        #endif
+        
+        #define PI 3.14159265358979323846
+
+        uniform vec2 u_resolution;
+        uniform float u_time;
+        
+        mat2 rotate2d(float _angle){
+            return mat2(cos(_angle),-sin(_angle),
+                        sin(_angle),cos(_angle));
+        }
+
+        float box(in vec2 _st, in vec2 _size){
+            _size = vec2(0.5) - _size*0.5;
+            vec2 uv = smoothstep(_size,
+                                _size+vec2(0.001),
+                                _st);
+            uv *= smoothstep(_size,
+                            _size+vec2(0.001),
+                            vec2(1.0)-_st);
+            return uv.x*uv.y;
+        }
+        
+        float cross(in vec2 _st, float _size){
+            return  box(_st, vec2(_size,_size/4.)) +
+                    box(_st, vec2(_size/4.,_size));
+        }
+        
+        void main(){
+            vec2 st = gl_FragCoord.xy/u_resolution.xy;
+            vec3 color = vec3(0.0);
+        
+            float y = sin(u_time) * 0.5;
+            float x = (abs(fract(u_time * 0.5) * 2.0 - 1.0)) - 0.5;
+            vec2 translate = vec2(x, y); //vec2(cos(u_time * s),sin(u_time * s));
+            
+            translate *= 0.75;
+            
+            st += translate;
+            
+            st -= vec2(0.5);
+            st = rotate2d( sin(u_time)*PI ) * st;
+            st += vec2(0.5);
+        
+            color += vec3(cross(st,0.25));
+        
+            gl_FragColor = vec4(color,1.0);
+        }
+    `);
+    </script>
+
 
     ```glsl
     void main(){
