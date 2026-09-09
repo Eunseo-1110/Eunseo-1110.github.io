@@ -93,56 +93,7 @@ tags: [shader, study]     # TAG names should always be lowercase
 
     <script>
     window.runGLSL("cross-xy", `
-        #ifdef GL_ES
-        precision mediump float;
-        #endif
-        uniform vec2 u_resolution;
-        uniform float u_time;
-        vec2 brickTileMoveX(vec2 _st, float _zoom){
-            _st *= _zoom;
-            // Here is where the offset is happening
-            float t = step(1.0,mod(_st.y,2.0));
-            
-            _st.x += mix(u_time, -u_time, t);
-        
-            return fract(_st);
-        }
-        vec2 brickTileMoveY(vec2 _st, float _zoom){
-            _st *= _zoom;
-            // Here is where the offset is happening
-            float t = step(1.0,mod(_st.x,2.0));
-        
-            _st.y += mix(u_time, -u_time, t);
-        
-            return fract(_st);
-        }
-        float box(vec2 _st, vec2 _size){
-            _size = vec2(0.5)-_size*0.5;
-            vec2 uv = smoothstep(_size,_size+vec2(1e-4),_st);
-            uv *= smoothstep(_size,_size+vec2(1e-4),vec2(1.0)-_st);
-            return uv.x*uv.y;
-        }
-        void main(void){
-            vec2 st = gl_FragCoord.xy/u_resolution.xy;
-            vec3 color = vec3(0.0);
-            // Modern metric brick of 215mm x 102.5mm x 65mm
-            // http://www.jaharrison.me.uk/Brickwork/Sizes.html
-            // st /= vec2(2.15,0.65)/1.5;
-        
-            vec2 stY = brickTileMoveY(st,10.0);
-            vec2 stX = brickTileMoveX(st,10.0);
-            
-            float t = fract(u_time * 0.5);
-            float useX = step(0.5, t);
-            st = mix(stY, stX, useX);
-        
-            st = vec2(0.5) - st;
-            color = step(0.3, vec3(length(st)));
-            //color = vec3(box(st,vec2(0.9)));
-            // Uncomment to see the space coordinates
-            //color = vec3(st,0.0);
-            gl_FragColor = vec4(color,1.0);
-        }
+        precision mediump float;uniform vec2 u_resolution;uniform float u_time;vec2 brickTileMoveX(vec2 _st, float _zoom){_st *= _zoom;float t = step(1.0,mod(_st.y,2.0));_st.x += mix(u_time, -u_time, t);return fract(_st);}vec2 brickTileMoveY(vec2 _st, float _zoom){ _st *= _zoom;float t = step(1.0,mod(_st.x,2.0));_st.y += mix(u_time, -u_time, t);return fract(_st);}float box(vec2 _st, vec2 _size){ _size = vec2(0.5)-_size*0.5;vec2 uv = smoothstep(_size,_size+vec2(1e-4),_st);uv *= smoothstep(_size,_size+vec2(1e-4),vec2(1.0)-_st);return uv.x*uv.y;}void main(void){vec2 st = gl_FragCoord.xy/u_resolution.xy;vec3 color = vec3(0.0);vec2 stY = brickTileMoveY(st,10.0);vec2 stX = brickTileMoveX(st,10.0);float t = fract(u_time * 0.5);float useX = step(0.5, t);st = mix(stY, stX, useX);st = vec2(0.5) - st;color = step(0.3, vec3(length(st))); gl_FragColor = vec4(color,1.0);}
     `);
     </script>
 
